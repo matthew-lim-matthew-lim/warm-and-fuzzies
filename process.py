@@ -1,4 +1,4 @@
-from pylatex import Document, Command
+from pylatex import Document, Command, LineBreak
 from pylatex.utils import italic, NoEscape
 from openpyxl import load_workbook
 import json
@@ -30,14 +30,13 @@ print(json.dumps(WARM_AND_FUZZIES, indent=2))
 
 # Dump each person into a LaTeX file
 for name in WARM_AND_FUZZIES:
-    doc = Document(name)
+    doc = Document(indent=False)
 
     doc.preamble.append(Command('title', name))
     doc.preamble.append(Command('author', 'Co-op Soc 2020'))
-    doc.preamble.append(Command('date', NoEscape(r'\today')))
+    doc.append(NoEscape(r'\maketitle'))
 
     for message in WARM_AND_FUZZIES[name]:
-        doc.append(message)
+        doc.append(message + "\n\n")
 
-    doc.generate_pdf(compiler="pdfLaTeX")
-    # doc.generate_pdf()
+    doc.generate_pdf(name)
