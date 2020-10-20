@@ -1,5 +1,5 @@
 from pylatex import Document, Command, LineBreak
-from pylatex.utils import italic, NoEscape
+from pylatex.utils import italic, NoEscape, bold
 from openpyxl import load_workbook
 import json
 
@@ -32,9 +32,11 @@ print(json.dumps(WARM_AND_FUZZIES, indent=2))
 for name in WARM_AND_FUZZIES:
     doc = Document(indent=False)
 
-    doc.preamble.append(Command('title', name))
-    doc.preamble.append(Command('author', 'Co-op Soc 2020'))
-    doc.append(NoEscape(r'\maketitle'))
+    doc.append(Command("pagenumbering", "gobble"))
+    doc.preamble.append(Command('title', bold(name)))
+    doc.preamble.append(Command('author', "Co-op Soc 2020"))
+    doc.preamble.append(Command('date', ''))
+    doc.append(NoEscape('\maketitle'))
 
     for message in WARM_AND_FUZZIES[name]:
         doc.append(message + "\n\n")
