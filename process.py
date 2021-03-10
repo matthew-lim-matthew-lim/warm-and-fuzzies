@@ -10,16 +10,15 @@ WARM_AND_FUZZIES = {}
 
 # INDEXES
 TIMESTAMP = 0
-FIRST_NAME = 1
-LAST_NAME = 2
-MESSAGE = 3
+NAME = 1
+MESSAGE = 2
 
-workbook = load_workbook(filename="Warm and Fuzzies (Responses).xlsx")
+workbook = load_workbook(filename="responses.xlsx")
 sheet = workbook.active
 
 # Go through each row until hit an empty row
-for row in sheet.iter_rows(min_row=2, max_col=4, max_row=sheet.max_row):
-    name = f"{row[FIRST_NAME].value.strip()} {row[LAST_NAME].value.strip()}".upper()
+for row in sheet.iter_rows(min_row=2, max_col=3, max_row=sheet.max_row):
+    name = f"{row[NAME].value.strip()}".upper()
 
     if name not in WARM_AND_FUZZIES:
         WARM_AND_FUZZIES[name] = []
@@ -63,6 +62,6 @@ for name in WARM_AND_FUZZIES:
         divider.alignment = 1
         doc.add_paragraph(message.strip().strip("\n"))
 
-    file_name = name.replace(" ", "_") + ".docx"
+    file_name = name + ".docx"
 
     doc.save(file_name)
