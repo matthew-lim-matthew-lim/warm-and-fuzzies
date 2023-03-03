@@ -11,15 +11,18 @@ WARM_AND_FUZZIES = {}
 # INDEXES
 TIMESTAMP = 0
 NAME = 1
-MESSAGE = 2
+MESSAGE = 17
 
 workbook = load_workbook(filename="responses.xlsx")
 sheet = workbook.active
 
 # Go through each row until hit an empty row
-for row in sheet.iter_rows(min_row=2, max_col=3, max_row=sheet.max_row):
-    name = f"{row[NAME].value.strip()}".upper()
-
+for row in sheet.iter_rows(min_row=2, max_col=18, max_row=sheet.max_row):
+    for col in range(2, 17):
+        if row[col].value != None:
+            name = row[col].value.strip().upper().replace(" (CAMP LEADER)", "")
+            
+    print(name)
     if name not in WARM_AND_FUZZIES:
         WARM_AND_FUZZIES[name] = []
 
@@ -55,7 +58,7 @@ for name in WARM_AND_FUZZIES:
 
     h = doc.add_paragraph()
     h.alignment = 1
-    h.add_run("CSESoc First Year Camp 2021").italic = True
+    h.add_run("CSESoc First Year Camp 2023").italic = True
 
     for message in WARM_AND_FUZZIES[name]:
         divider = doc.add_paragraph(random.choice(EMOJIS))
