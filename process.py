@@ -8,18 +8,23 @@ from emojis import EMOJIS
 
 WARM_AND_FUZZIES = {}
 
-# INDEXES
+# INDEXES i.e. what column is this data in your spreadsheet
 TIMESTAMP = 0
 MESSAGE = 17
 
+# Replace 'responses.xlsx' with your own file, or rename your own file
 workbook = load_workbook(filename="responses.xlsx")
 sheet = workbook.active
 
 # Go through each row until hit an empty row
+# This finds the name of the recipient, may need to change min_row, max_col
+# and the name_start, name_end
+name_start = 2
+name_end = 17
 for row in sheet.iter_rows(min_row=2, max_col=18, max_row=sheet.max_row):
-    for col in range(2, 17):
+    for col in range(name_start, name_end):
         if row[col].value != None:
-            name = row[col].value.strip().upper().replace(" (CAMP LEADER)", "")
+            name = row[col].value.strip().upper()
             
     print(name)
     if name not in WARM_AND_FUZZIES:
@@ -66,4 +71,5 @@ for name in WARM_AND_FUZZIES:
 
     file_name = name + ".docx"
 
+    # save each file as a .docx
     doc.save(file_name)
