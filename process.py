@@ -10,7 +10,6 @@ WARM_AND_FUZZIES = {}
 
 # INDEXES
 TIMESTAMP = 0
-NAME = 1
 MESSAGE = 17
 
 workbook = load_workbook(filename="responses.xlsx")
