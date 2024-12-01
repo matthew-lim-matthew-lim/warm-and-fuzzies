@@ -26,8 +26,8 @@ def generate(contacts_filename="contacts.xlsx"):
                 "You are awesome and we appreciate all your hard work and dedication. "
                 "We couldn't have done it without you. "
                 "We hope you had a great time, and that you achieved your goals and made some great memories. \n"
-                "All the best for what the future holds."
-                "From your lovely 2024 exec team.")
+                "All the best for what the future holds. "
+                "From your lovely 2024 exec team. ❤️")
             ]
 
     return WARM_AND_FUZZIES

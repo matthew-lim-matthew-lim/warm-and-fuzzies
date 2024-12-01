@@ -13,6 +13,8 @@ WARM_AND_FUZZIES = {}
 # Optionally, generate generic warm and fuzzies for everyone in the contacts list.
 # This is useful if you want to send a warm and fuzzy to everyone, even if they didn't
 # recieve one. 
+# To modify the generic message, open `generic_warm_and_fuzzies.py` and change the message.
+# If you do not want to generate generic warm and fuzzies, comment out the line below.
 WARM_AND_FUZZIES = generic_warm_and_fuzzies.generate(contacts_filename="contacts.xlsx")
 
 # INDEXES i.e. what column is this data in your spreadsheet
