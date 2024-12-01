@@ -10,7 +10,7 @@ The basic flow is:
 
 ## Usage
 
-The instructions for the broader Warm and Fuzzies process can be found here: `https://csesoc.atlassian.net/wiki/spaces/EP/pages/2543976449/Warm+and+Fuzzies+Guide`
+The instructions for the broader Warm and Fuzzies process can be found here: https://github.com/matthew-lim-matthew-lim/warm-and-fuzzies
 
 We will proceed with the instructions for this step of creating the warm and fuzzies.
 
