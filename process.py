@@ -4,13 +4,20 @@ from docx.shared import Pt, RGBColor, Inches
 import random
 import json
 
+import generic_warm_and_fuzzies
+
 from emojis import EMOJIS
 
 WARM_AND_FUZZIES = {}
 
+# Optionally, generate generic warm and fuzzies for everyone in the contacts list.
+# This is useful if you want to send a warm and fuzzy to everyone, even if they didn't
+# recieve one. 
+WARM_AND_FUZZIES = generic_warm_and_fuzzies.generate(contacts_filename="contacts.xlsx")
+
 # INDEXES i.e. what column is this data in your spreadsheet
 TIMESTAMP = 0
-MESSAGE = 17
+MESSAGE = 16
 
 # Replace 'responses.xlsx' with your own file, or rename your own file
 workbook = load_workbook(filename="responses.xlsx")
@@ -19,8 +26,8 @@ sheet = workbook.active
 # Go through each row until hit an empty row
 # This finds the name of the recipient, may need to change min_row, max_col
 # and the name_start, name_end
-name_start = 2
-name_end = 17
+name_start = 3
+name_end = 16
 for row in sheet.iter_rows(min_row=2, max_col=18, max_row=sheet.max_row):
     for col in range(name_start, name_end):
         if row[col].value != None:
@@ -62,7 +69,7 @@ for name in WARM_AND_FUZZIES:
 
     h = doc.add_paragraph()
     h.alignment = 1
-    h.add_run("CSESoc First Year Camp 2023").italic = True
+    h.add_run("UNSW CSESOC 2024").italic = True
 
     for message in WARM_AND_FUZZIES[name]:
         divider = doc.add_paragraph(random.choice(EMOJIS))
