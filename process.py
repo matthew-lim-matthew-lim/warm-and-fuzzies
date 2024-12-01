@@ -76,7 +76,7 @@ for name in WARM_AND_FUZZIES:
         divider.alignment = 1
         doc.add_paragraph(message.strip().strip("\n"))
 
-    file_name = name + ".docx"
+    file_name =f"output_warm_and_fuzzies/{name}.docx"
 
     # save each file as a .docx
     doc.save(file_name)
