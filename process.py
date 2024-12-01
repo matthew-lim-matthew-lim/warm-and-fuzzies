@@ -15,7 +15,8 @@ WARM_AND_FUZZIES = {}
 # recieve one. 
 # To modify the generic message, open `generic_warm_and_fuzzies.py` and change the message.
 # If you do not want to generate generic warm and fuzzies, comment out the line below.
-WARM_AND_FUZZIES = generic_warm_and_fuzzies.generate(contacts_filename="contacts.xlsx")
+
+# WARM_AND_FUZZIES = generic_warm_and_fuzzies.generate(contacts_filename="contacts.xlsx")
 
 # INDEXES i.e. what column is this data in your spreadsheet
 TIMESTAMP = 0
